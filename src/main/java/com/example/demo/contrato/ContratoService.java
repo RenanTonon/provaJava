@@ -21,8 +21,8 @@ public class ContratoService {
     public ContratoSchema criaContrato(ContratoSchema objContrato) {
 
         List<PessoaSchema> pessoas = objContrato.getPessoas();
-        for(var x = 0;x < pessoas.toArray().length;x++){
-            this.pessoaService.criaPessoa(pessoas.get(x));
+        for(PessoaSchema pessoa : pessoas){
+            this.pessoaService.criaPessoa(pessoa);
         }
         this.trabalhoService.criaTrabalho(objContrato.getTrabalho());
         return this.contratoRepository.save(objContrato);
